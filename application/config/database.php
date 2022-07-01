@@ -97,7 +97,7 @@ $db['default'] = array(
 
 $db['production'] = array(
 	'dsn'	=> '',
-	'hostname' => 'https://fiona.sg.domainesia.com/',
+	'hostname' => 'fiona.sg.domainesia.com',
 	'username' => 'tipolhas_absensi',
 	'password' => 'h%m2A-ixbvuZ',
 	'database' => 'tipolhas_absensi',
