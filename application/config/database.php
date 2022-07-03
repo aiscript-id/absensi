@@ -97,7 +97,7 @@ $db['default'] = array(
 
 $db['production'] = array(
 	'dsn'	=> '',
-	'hostname' => 'vaporeon.rapidplex.com/',
+	'hostname' => 'vaporeon.rapidplex.com',
 	'username' => 'codeinem_absensi',
 	'password' => 'MnvLs7[I5xO9',
 	'database' => 'codeinem_absensi',
