@@ -4,7 +4,7 @@
         <div class="card mb-4">
             <div class="card-header text-center">
                 <div class="float-right">
-                    <button id="qrcode-pegawai" class="btn btn-primary" data-toggle="modal" data-target="#qrcodemodal"><span class="fas fa-qrcode mr-1"></span>QR CODE</button>
+                    <!-- <button id="qrcode-pegawai" class="btn btn-primary" data-toggle="modal" data-target="#qrcodemodal"><span class="fas fa-qrcode mr-1"></span>QR CODE</button> -->
                 </div>
             </div>
             <div class="card-body">
