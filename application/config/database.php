@@ -97,10 +97,10 @@ $db['default'] = array(
 
 $db['production'] = array(
 	'dsn'	=> '',
-	'hostname' => 'fiona.sg.domainesia.com',
-	'username' => 'tipolhas_absensi',
-	'password' => 'h%m2A-ixbvuZ',
-	'database' => 'tipolhas_absensi',
+	'hostname' => 'vaporeon.rapidplex.com/',
+	'username' => 'codeinem_absensi',
+	'password' => 'MnvLs7[I5xO9',
+	'database' => 'codeinem_absensi',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

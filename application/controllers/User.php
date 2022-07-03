@@ -7,8 +7,9 @@ class User extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-        $this->get_datasess = $this->db->get_where('user', ['username' =>
-        $this->session->userdata('username')])->row_array();
+        $this->get_datasess = $this->db->get_where('user', [
+            'username' => $this->session->userdata('username')
+        ])->row_array();
         $this->load->model('M_Front');
         $this->load->model('M_User');
         $this->get_datasetupapp = $this->M_Front->fetchsetupapp();
