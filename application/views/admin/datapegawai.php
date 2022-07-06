@@ -175,12 +175,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <label for="barcode_pegawai" class="col-sm-4 col-form-label">Buat Barcode Pegawai</label>
                     <div class="col-sm-8">
                         <div class="custom-control custom-checkbox"><input class="custom-control-input" id="barcode_pegawai" type="checkbox" name="barcode_pegawai" /><label class="custom-control-label" for="barcode_pegawai">Dengan Barcode</label></div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                     <div class="col-sm-4">Pas Foto Pegawai</div>
                     <div class="col-sm-8">

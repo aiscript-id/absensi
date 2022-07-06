@@ -124,12 +124,12 @@
         </div>
     </div>
 </div>
-<div class="form-group row">
+<!-- <div class="form-group row">
     <label for="barcode_pegawai" class="col-sm-4 col-form-label">Buat Barcode Pegawai</label>
     <div class="col-sm-8">
         <div class="custom-control custom-checkbox"><?= form_checkbox('barcode_pegawai_edit', 1, ($datapegawai['qr_code_use'] == 1) ? true : false, 'id="barcode_pegawai_edit" class="custom-control-input"'); ?><label class="custom-control-label" for="barcode_pegawai_edit">Dengan Barcode</label></div>
     </div>
-</div>
+</div> -->
 <div class="form-group row">
     <div class="col-sm-2">Pas Foto Pegawai</div>
     <div class="col-sm-10">
