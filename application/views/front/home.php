@@ -15,6 +15,43 @@
             </div>
         </div>
     </div>
+    <!-- card last log -->
+    <?php 
+    $log = $this->db->order_by('id', 'desc')->limit(1)->get('log')->result_array();
+    ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <h6 class="card-title mb-0">Log Terakhir</h6>
+                </div>
+                <div class="card-body">
+                    <?php if (empty($log)) { ?>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> Belum ada log terbaru.
+                        </div>
+                    <?php } else { ?>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Log</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; foreach ($log as $l) { ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
+                                        <td><?= $l['nama_user'] ?> <?= $l['deskripsi'] ?> pada <?= $l['timestamp'] ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row mt-3">
         <div class="col-xl-7">
             <div class="card mb-4">
@@ -75,7 +112,7 @@
                         <h3 id="clocknow"></h3>
                         <h3 id="datenow"></h3>
                     </div>
-                    <?= form_dropdown('ket_absen', ['Bekerja Di Kantor' => 'Bekerja Di Kantor', 'Bekerja Di Rumah / WFH' => 'Bekerja Di Rumah / WFH', 'Sakit' => 'Sakit', 'Cuti' => 'Cuti'], '', ['class' => 'form-control align-content-center my-2', 'id' => 'ket_absen']); ?>
+                    <?= form_dropdown('ket_absen', ['Bekerja Di Kantor' => 'Bekerja Di Kantor', 'Bekerja Di Rumah / WFH' => 'Bekerja Di Rumah / WFH', 'Sakit' => 'Sakit', 'Dinas' => 'Dinas'], '', ['class' => 'form-control align-content-center my-2', 'id' => 'ket_absen']); ?>
                     <div class="mt-2">
                         <div id="func-absensi">
                             <p class="font-weight-bold">Status Kehadiran: <?= $statuspegawai = (empty($dbabsensi['status_pegawai'])) ? '<span class="badge badge-primary">Belum Absen</span>' : (($dbabsensi['status_pegawai'] == 1) ? '<span class="badge badge-success">Sudah Absen</span>' : '<span class="badge badge-danger">Absen Terlambat</span>'); ?></p>

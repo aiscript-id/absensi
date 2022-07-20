@@ -6,6 +6,9 @@
                 <?php if ($this->session->userdata('role_id') == 1) : ?>
                     <div class="btn btn-danger" id="clear-absensi"><span class="fas fa-trash mr-1"></span>Clear All</div>
                 <?php endif; ?>
+                <!-- table absensi user -->
+
+                <a class="btn btn-success" href="<?= base_url('user-absensi'); ?>"><span class="fas fa-user mr-1"></span>Absensi Per User</a>
                 <a class="btn btn-success" href="<?= base_url('export'); ?>"><span class="fas fa-file mr-1"></span>Export Absensi</a>
                 <div class="btn btn-primary" id="refresh-tabel-absensi"><span class="fas fa-sync-alt mr-1"></span>Refresh Tabel</div>
             </div>
@@ -20,7 +23,10 @@
                             <th>Nama Pegawai</th>
                             <th>Waktu Datang</th>
                             <th>Waktu Pulang</th>
+                            <th>Keterlambatan</th>
+                            <th>Jam Kerja</th>
                             <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -31,7 +37,10 @@
                             <th>Nama Pegawai</th>
                             <th>Waktu Datang</th>
                             <th>Waktu Pulang</th>
+                            <th>Keterlambatan</th>
+                            <th>Jam Kerja</th>
                             <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>

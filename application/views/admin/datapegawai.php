@@ -152,14 +152,14 @@
                             <?= form_radio('shift_pegawai', 1, set_radio('shift_pegawai[]', 1), "id='shift_pegawai' class='form-check-input'"); ?>
                             <label class="form-check-label" for="shift_pegawai1">Full Time</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <!-- <div class="form-check form-check-inline">
                             <?= form_radio('shift_pegawai', 2, set_radio('shift_pegawai[]', 2), "class='form-check-input'"); ?>
                             <label class="form-check-label" for="shift_pegawai2">Part Time</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <?= form_radio('shift_pegawai', 3, set_radio('shift_pegawai[]', 3), "class='form-check-input'"); ?>
                             <label class="form-check-label" for="shift_pegawai3">Shift</label>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="form-group row">

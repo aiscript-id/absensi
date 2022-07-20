@@ -101,14 +101,14 @@
             <?= form_radio('shift_pegawai_edit', 1, set_value('shift_pegawai_edit[]', ($datapegawai['bagian_shift'] == 1) ? true : false), 'id="shift_pegawai_edit" class="form-check-input"'); ?>
             <label class="form-check-label" for="shift_pegawai_edit1">Full Time</label>
         </div>
-        <div class="form-check form-check-inline">
+        <!-- <div class="form-check form-check-inline">
             <?= form_radio('shift_pegawai_edit', 2, set_value('shift_pegawai_edit[]', ($datapegawai['bagian_shift'] == 2) ? true : false), 'class="form-check-input"'); ?>
             <label class="form-check-label" for="shift_pegawai_edit2">Part Time</label>
         </div>
         <div class="form-check form-check-inline">
             <?= form_radio('shift_pegawai_edit', 3, set_value('shift_pegawai_edit[]', ($datapegawai['bagian_shift'] == 3) ? true : false), 'class="form-check-input"'); ?>
             <label class="form-check-label" for="shift_pegawai_edit3">Shift</label>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="form-group row">

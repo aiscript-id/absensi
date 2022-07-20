@@ -61,19 +61,37 @@ class M_Front extends CI_Model
                     'tgl_absen' => $today,
                     'keterangan_absen' => htmlspecialchars($this->input->post('ket_absen', true)),
                     'status_pegawai' => 1,
-                    'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location'
+                    'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location',
+                    'tanggal' => date('Y-m-d'),
                 ];
                 $this->db->insert('db_absensi', $data);
             }
         } elseif (strtotime($clocknow) > strtotime($appsettings['absen_mulai_to']) /* && strtotime($clocknow) >= strtotime($appsettings['absen_pulang']) */) {
             if ($this->db->get_where('db_absensi', ['tgl_absen' => $today, 'kode_pegawai' => $this->get_datasess['kode_pegawai']])->row_array()) {
+                $minute = 0;
+                $jam_masuk = $this->db->get_where('db_absensi', ['tgl_absen' => $today, 'kode_pegawai' => $this->get_datasess['kode_pegawai']])->row_array()['jam_masuk'];
+                $jam_pulang = $clocknow;
+                $jam_masuk = strtotime($jam_masuk);
+                $jam_pulang = strtotime($jam_pulang);
+                $minute = ($jam_pulang - $jam_masuk) / 60;
+
+
                 $data = [
                     'jam_pulang' => $clocknow,
-                    'alasan_duluan' =>  $this->input->post('alasan_duluan')
+                    'alasan_duluan' =>  $this->input->post('alasan_duluan'),
+                    'jam_kerja' => $minute,
                 ];
                 $this->db->where('tgl_absen', $today)->where('kode_pegawai', $this->get_datasess['kode_pegawai']);
                 $this->db->update('db_absensi', $data);
             } else {
+
+                $keterlambatan = 0;
+                $jam_masuk = $this->db->get_where('db_absensi', ['tgl_absen' => $today, 'kode_pegawai' => $this->get_datasess['kode_pegawai']])->row_array()['jam_masuk'];
+                // count keterlambatan
+                if (strtotime($jam_masuk) > strtotime($appsettings['absen_mulai'])) {
+                    $keterlambatan = strtotime($jam_masuk) - strtotime($appsettings['absen_mulai']);
+                    $keterlambatan = $keterlambatan / 60;
+                }
                 $data = [
                     'nama_pegawai' => $this->get_datasess['nama_lengkap'],
                     'kode_pegawai' => $this->get_datasess['kode_pegawai'],
@@ -82,7 +100,10 @@ class M_Front extends CI_Model
                     'tgl_absen' => $today,
                     'keterangan_absen' => htmlspecialchars($this->input->post('ket_absen', true)),
                     'status_pegawai' => 2,
-                    'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location'
+                    'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location',
+                    'tanggal' => date('Y-m-d'),
+                    'keterlambatan' => $keterlambatan,
+
                 ];
                 $this->db->insert('db_absensi', $data);
             }
@@ -95,7 +116,8 @@ class M_Front extends CI_Model
                 'tgl_absen' => $today,
                 'keterangan_absen' => htmlspecialchars($this->input->post('ket_absen', true)),
                 'status_pegawai' => 2,
-                'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location'
+                'maps_absen' => $appsettings['maps_use'] == TRUE ? htmlspecialchars($this->input->post('maps_absen', true)) : 'No Location',
+                'tanggal' => date('Y-m-d'),
             ];
             $this->db->insert('db_absensi', $data);
         }

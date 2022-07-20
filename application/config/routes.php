@@ -58,6 +58,7 @@ $route['settingapp'] = 'admin/settingapp';
 $route['dashboard'] = 'admin/dashboard';
 $route['datapegawai'] = 'admin/datapegawai';
 $route['absensi'] = 'admin/absensi';
+$route['user-absensi'] = 'admin/absensiUser';
 
 //User URL
 $route['setting'] = 'user/setting';
@@ -75,3 +76,9 @@ $route['cetak'] = 'docs/print';
 $route['export'] = 'docs/export';
 $route['instantabsen'] = 'absen/instant';
 $route['confirmabsen'] = 'absen/confirmabsen';
+
+// setAllJamKerja
+$route['setAllJamKerja'] = 'admin/setAllJamKerja';
+$route['setTanggal'] = 'admin/setTanggal';
+$route['setKeterlambatan'] = 'admin/setKeterlambatan';
+

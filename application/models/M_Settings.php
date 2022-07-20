@@ -50,7 +50,18 @@ class M_Settings extends CI_Model
     }
     public function update_setting()
     {
-
+        $set = $this->db->get_where('db_setting', ['status_setting' => 1])->row_array();
+        // if get absen_mulai, absen_sampai, absen_pulang_sampai set log
+        if ($set['absen_mulai'] != $this->input->post('absen_mulai')) {
+            $this->db->insert('log', ['nama_user' => $this->session->userdata('username'), 'deskripsi' => 'Mengubah Jam Absen Mulai Menjadi ' . $this->input->post('absen_mulai')]);
+        }
+        if ($set['absen_mulai_to'] != $this->input->post('absen_sampai')) {
+            $this->db->insert('log', ['nama_user' => $this->session->userdata('username'), 'deskripsi' => 'Mengubah Jam Absen Mulai Sampai ' . $this->input->post('absen_sampai')]);
+        }
+        if ($set['absen_pulang'] != $this->input->post('absen_pulang_sampai')) {
+            $this->db->insert('log', ['nama_user' => $this->session->userdata('username'), 'deskripsi' => 'Mengubah Jam Absen Pulang Sampai ' . $this->input->post('absen_pulang_sampai')]);
+        }
+        
         $sendsave = [
             'nama_instansi' => htmlspecialchars($this->input->post('nama_instansi')),
             'jumbotron_lead_set' =>  htmlspecialchars($this->input->post('pesan_jumbotron')),
@@ -98,5 +109,6 @@ class M_Settings extends CI_Model
         $this->db->where('status_setting', 1);
         $this->db->update('db_setting', $sendsave);
         $this->db->update('user', ['instansi' => htmlspecialchars($this->input->post('nama_instansi'))]);
+
     }
 }

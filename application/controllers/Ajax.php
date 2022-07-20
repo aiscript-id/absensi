@@ -495,8 +495,15 @@ class Ajax extends CI_Controller
 
     //Fitur Ajax Tabel Absensi
 
+    // get settingapp data row
+
+
+
+
     function get_datatbl()
     { //data absen by JSON object
+
+        $settingapp = $this->db->where('status_setting', 1)->get('db_setting')->row();
         $dataabsen = $this->input->get('type');
         $datapegawai = $this->get_datasess;
         $draw = intval($this->input->get("draw"));
@@ -552,7 +559,11 @@ class Ajax extends CI_Controller
                         $r->nama_pegawai,
                         $r->jam_masuk,
                         $r->jam_pulang,
+                        ($r->keterlambatan > 0) ? $r->keterlambatan . ' menit': '-',
+                        $r->jam_kerja . ' ('. round($r->jam_kerja / 60, 2) .' jam)',
                         (empty($r->status_pegawai)) ? '<span class="badge badge-primary">Belum Absen</span>' : (($r->status_pegawai == 1) ? '<span class="badge badge-success">Sudah Absen</span>' : '<span class="badge badge-danger">Absen Terlambat</span>'),
+                        ($r->jam_masuk > $settingapp->absen_mulai_to ? '<span class="small text-danger ">Terlambat</span>' : '<span class="small text-success ">Masuk Tepat Waktu</span>').'<br>'.
+                        ($r->jam_pulang > $settingapp->absen_pulang ? '<span class="small text-success ">Pulang Tepat Waktu</span>' : '<span class="small text-danger ">Pulang Duluan</span>'),
                         '<div class="btn-group btn-small " style="text-align: right;">
                     <button class="btn btn-primary detail-absen" data-absen-id="' . $r->id_absen . '" title="Lihat Absensi"><span class="fas fa-fw fa-address-card"></span></button>
                     <button class="btn btn-danger delete-absen" title="Hapus Absensi" data-absen-id="' . $r->id_absen . '"><span class="fas fa-trash"></span></button>
